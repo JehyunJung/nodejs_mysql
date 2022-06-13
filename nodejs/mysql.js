@@ -8,13 +8,4 @@ const connection=mysql.createConnection({
     database:config.database
 })
 
-connection.connect();
-
-connection.query('select * from topic',(err,res,fields)=>{
-    if(err){
-        throw err;
-    }
-    console.log("The solution is: " + JSON.stringify(res));
-})
-
-connection.end();
+module.exports=connection;
