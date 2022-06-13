@@ -7,6 +7,7 @@ const path = require('path');
 const sanitizeHtml = require('sanitize-html');
 const mysql_connection=require('./lib/mysql.js');
 const topic=require('./lib/topic');
+const author=require("./lib/author");
 
 mysql_connection.connect();
 
@@ -19,8 +20,7 @@ var app = http.createServer(function(request,response){
         topic.home(request,response);
       } else {
         topic.page(request,response);
-      }
-        
+      }  
     } else if(pathname === '/create'){
       topic.create(request,response);
     }
@@ -32,7 +32,18 @@ var app = http.createServer(function(request,response){
       topic.update_process(request,response);
     } else if(pathname === '/delete_process'){
       topic.delete_process(request,response);
-    } else {
+    } else if(pathname === "/author"){
+      author.home(request,response);
+    }else if(pathname === "/author/create_process"){
+      author.create_process(request,response);
+    }else if(pathname === "/author/update"){
+      author.update(request,response);
+    }else if(pathname === "/author/update_process"){
+      author.update_process(request,response);
+    }else if(pathname === "/author/delete_process"){
+      author.delete_process(request,response);
+    }
+    else {
       response.writeHead(404);
       response.end('Not found');
     }

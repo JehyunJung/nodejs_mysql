@@ -1,8 +1,7 @@
 --
 -- Table structure for table `author`
 --
- 
- 
+
 CREATE TABLE `author` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
@@ -28,7 +27,8 @@ CREATE TABLE `topic` (
   `description` text,
   `created` datetime NOT NULL,
   `author_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(`author_id`) REFERENCES AUTHOR(`id`) ON DELETE CASCADE
 );
  
 --
